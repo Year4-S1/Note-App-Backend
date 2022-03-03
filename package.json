@@ -1,0 +1,31 @@
+{
+  "name": "ctse",
+  "version": "1.0.0",
+  "description": "CTSE+mobile application",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Year4-S1/CTSE.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "engines": {
+    "node": "16.x"
+  },
+  "bugs": {
+    "url": "https://github.com/Year4-S1/CTSE/issues"
+  },
+  "homepage": "https://github.com/Year4-S1/CTSE#readme",
+  "dependencies": {
+    "body-parser": "^1.19.2",
+    "config": "^3.3.7",
+    "cors": "^2.8.5",
+    "date-utils": "^1.2.21",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "mongoose": "^6.2.2"
+  }
+}
