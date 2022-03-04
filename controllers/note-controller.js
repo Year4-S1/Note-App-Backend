@@ -8,6 +8,8 @@ const deleteNoteController = require("../services/deleteNote-service");
 module.exports = function () {
   router.post("/create", createNoteController.createNote);
   router.get("/", viewNoteController.viewNotes);
+  router.get("/userid/:id", viewNoteController.viewNotesByUserId);
+  router.get("/category/:id", viewNoteController.viewNotesByCategoryId);
   router.get("/viewnote/:id", viewNoteController.viewNoteById);
   router.put("/updatenote/:id", updateNoteController.updateNote);
   router.delete("/deletenote/:id", deleteNoteController.deleteNote);

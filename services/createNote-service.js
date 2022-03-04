@@ -4,6 +4,8 @@ require("date-utils");
 const createNote = async (req, res) => {
   if (req.body) {
     const note = new Note();
+    note.userId = req.body.userId;
+    note.categoryId = req.body.categoryId;
     note.noteTittle = req.body.noteTittle;
     note.noteMessage = req.body.noteMessage;
     note.noteDate = new Date().toLocaleDateString();
