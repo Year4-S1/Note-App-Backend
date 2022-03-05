@@ -4,7 +4,7 @@ require("date-utils");
 const createReminder = async (req,res) => {
   if (req.body) {
     const notification = new Reminder();
-    notification.notificationID = req.body.userId;
+    notification.notificationID = req.body.notificationID;
     notification.reminderTittle = req.body.reminderTittle;
     notification.reminderMessage = req.body.reminderMessage;
     notification.reminderDate = new Date().toLocaleDateString();
