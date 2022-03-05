@@ -4,7 +4,8 @@
   "description": "CTSE+mobile application",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "test": "react-scripts test"
   },
   "repository": {
     "type": "git",
