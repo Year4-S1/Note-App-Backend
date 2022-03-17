@@ -35,7 +35,7 @@ mongoose.connection.once("open", () => {
 });
 
 app.listen(PORT, () => {
-  console.log("Server is Up and Running on PORT ${PORT}");
+  console.log(`Server is Up and Running on PORT ` + PORT);
 });
 
 app.route("/").get((req, res) => {
@@ -46,3 +46,4 @@ app.use("/note", noteController());
 app.use("/category", categoryController());
 app.use("/user", userController());
 app.use("/reminder",notificationController());
+
