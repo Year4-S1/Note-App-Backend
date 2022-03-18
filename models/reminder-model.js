@@ -8,8 +8,9 @@ const ReminderSchema = new mongoose.Schema({
   },
   reminderTittle: { type: String, required: false, trim: true },
   reminderMessage: { type: String, required: false, trim: true },
-  reminderDate: { type: String, required: false, trim: true },
-  reminderTime: { type: String, required: false, trim: true },
+  reminderDate: { type: Date, required: false, trim: true },
+},{
+  timestamps: true,
 });
 
 const Reminder = mongoose.model("notifications", ReminderSchema);
