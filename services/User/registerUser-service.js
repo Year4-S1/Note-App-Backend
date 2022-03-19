@@ -25,11 +25,24 @@ const registration = async (req, res) => {
 
         // console.log(exports.get)
 
+        const token = jwt.sign(
+            {
+                user_id: user._id, email
+            },
+            process.env.JWT_KEY,
+            {
+                expiresIn: "2h",
+            }
+
+        );
+
+        
 
         if (existingUser) {
+            existingUser.token = token;
             const validatePassword = await bcrypt.compare(body.password, existingUser.password);
             if (validatePassword) {
-                res.status(200).json({ message: "Valid password" });
+                res.status(200).json({ message: "Valid password", token:existingUser.token });
             } else {
                 res.status(400).json({ error: "Invalid Password" });
             }
@@ -78,39 +91,6 @@ const sendOtp = async (email) => {
 
     return dataPromise;
 
-
-
-    // res = https.get('https://dinuka.info/bixchat/bixchat-email.php?to=' + email + '&sub=otp verification&msg=please use this OTP ' + otp + '&host=mail.bixchat.xyz&from=notes@bixchat.xyz&psw=LakeRoad@123', (resp) => {
-    //     let data = '';
-
-
-
-    //     // A chunk of data has been received.
-    //     resp.on('data', (chunk) => {
-    //         data += chunk;
-
-
-    //     });
-
-    //     // The whole response has been received. Print out the result.
-    //     resp.on('end', () => {
-
-    //         if (data.includes('Message has been sent successfully')) {
-    //             console.log("Email sent");
-    //             res.send({"name":"GeeksforGeeks"});
-    //         }
-    //         else {
-    //             return (resp.statusCode);
-    //         }
-
-
-    //     });
-
-
-    // }).on("error", (err) => {
-    //     console.log("Error: " + err.message);
-    // });
-
 }
 
 const verify = async (req, res) => {
@@ -138,8 +118,9 @@ const verify = async (req, res) => {
         await user
             .save()
             .then((data) => {
-                res.status(200).send({ message: 'Registration Successfull' });
+                res.status(200).send({ message: 'Registration Successfull', token:user.token});
                 otp = '';
+                
             }
             )
             .catch((error) => {
