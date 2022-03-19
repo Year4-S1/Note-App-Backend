@@ -73,8 +73,7 @@ var otp;
 
 const generateOtp = async => {
     otp = Math.random();
-    otp = otp * 1000000;
-    otp = parseInt(otp);
+    otp = Math.floor(otp*899999 + 100000)
     console.log(otp);
 }
 
