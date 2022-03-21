@@ -43,7 +43,7 @@ const registration = async (req, res) => {
             const validatePassword = await bcrypt.compare(body.password, existingUser.password);
             if (validatePassword) {
                 await existingUser.save();
-                res.status(200).json({ message: "Valid password", token:existingUser.token });
+                res.status(200).json({ message: "Valid password", token:existingUser.token, id:existingUser._id});
             } else {
                 res.status(400).json({ error: "Invalid Password" });
             }
@@ -118,7 +118,7 @@ const verify = async (req, res) => {
         await user
             .save()
             .then((data) => {
-                res.status(200).send({ message: 'Registration Successfull', token:user.token});
+                res.status(200).send({ message: 'Registration Successfull', token:user.token, id:user._id});
                 otp = '';
                 
             }
