@@ -42,6 +42,7 @@ const registration = async (req, res) => {
             existingUser.token = token;
             const validatePassword = await bcrypt.compare(body.password, existingUser.password);
             if (validatePassword) {
+                await existingUser.save();
                 res.status(200).json({ message: "Valid password", token:existingUser.token });
             } else {
                 res.status(400).json({ error: "Invalid Password" });
