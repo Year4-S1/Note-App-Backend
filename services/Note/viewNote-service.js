@@ -1,4 +1,4 @@
-const Note = require("../models/note-model");
+const Note = require("../../models/note-model");
 
 const viewNotes = async (req, res) => {
   await Note.find({})

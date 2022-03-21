@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const createNoteController = require("../services/createNote-service");
-const viewNoteController = require("../services/viewNote-service");
-const updateNoteController = require("../services/updateNote-service");
-const deleteNoteController = require("../services/deleteNote-service");
+const createNoteController = require("../services/Note/createNote-service");
+const viewNoteController = require("../services/Note/viewNote-service");
+const updateNoteController = require("../services/Note/updateNote-service");
+const deleteNoteController = require("../services/Note/deleteNote-service");
 
 module.exports = function () {
   router.post("/create", createNoteController.createNote);
