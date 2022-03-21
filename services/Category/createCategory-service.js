@@ -16,6 +16,7 @@ const createCategory = async (req, res) => {
     for(const [key, value] of Object.entries(arr)){
       x++;
       let category = new Category({
+        userId: container.id,
         categoryName: key,
         categoryColor: value,
       });
@@ -25,7 +26,7 @@ const createCategory = async (req, res) => {
         .save()
         .then((data) => {
           if(x==count){
-            return res.status(200).send({ data: data });
+            return res.status(200).send({message:'success' });
           }
         }
         )
