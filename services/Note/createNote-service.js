@@ -4,7 +4,7 @@ require("date-utils");
 const createNote = async (req, res) => {
   if (req.body) {
     const note = new Note();
-    note.userId = req.body.userId;
+    note.token = req.body.token;
     note.categoryId = req.body.categoryId;
     note.noteTittle = req.body.noteTittle;
     note.noteMessage = req.body.noteMessage;

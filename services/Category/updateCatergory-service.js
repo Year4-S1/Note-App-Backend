@@ -1,7 +1,7 @@
 const Category = require("../../models/category-model");
 
 const updateCategory = async (req, res) => {
-  let userToken = await Category.find({ userId: req.params.id });
+  let userToken = await Category.find({ token: req.params.id });
   console.log(userToken);
 
   if (userToken) {
@@ -9,7 +9,7 @@ const updateCategory = async (req, res) => {
       { categoryColor: req.body.categoryColor },
       {
         $set: {
-          //userId: req.body.userId,
+          //token: req.body.token,
           categoryName: req.body.categoryName,
           //categoryColor: req.body.categoryColor,
         },
