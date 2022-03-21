@@ -7,9 +7,8 @@ const createReminder = async (req,res) => {
     notification.notificationID = req.body.notificationID;
     notification.reminderTittle = req.body.reminderTittle;
     notification.reminderMessage = req.body.reminderMessage;
-    notification.reminderDate = new Date().toLocaleDateString();
-    notification.reminderTime = new Date().toTimeString();
-    await note
+    notification.reminderDate = req.body.reminderDate;
+    await notification
       .save()
       .then((data) => {
         res.status(200).send({ data: data });
