@@ -2,15 +2,43 @@ const Category = require("../../models/category-model");
 
 const createCategory = async (req, res) => {
   if (req.body) {
-    const category = new Category(req.body);
-    await category
-      .save()
-      .then((data) => {
-        res.status(200).send({ data: data });
-      })
-      .catch((error) => {
-        res.status(500).send({ error: error.message });
+    let category = new Category();
+    const container = req.body.data;
+ 
+
+    let arr = container.data;
+
+
+
+    let count = Object.entries(arr).length;
+
+    let x = 0;
+    for(const [key, value] of Object.entries(arr)){
+      x++;
+      let category = new Category({
+        userId: container.id,
+        categoryName: key,
+        categoryColor: value,
       });
+
+      
+      await category
+        .save()
+        .then((data) => {
+          if(x==count){
+            return res.status(200).send({message:'success' });
+          }
+        }
+        )
+        .catch((error) => {
+          return res.status(500).send({ error: error.message });
+          
+        });
+      
+      
+    }
+
+
   }
 };
 

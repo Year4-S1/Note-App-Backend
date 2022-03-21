@@ -12,7 +12,7 @@ const viewNotes = async (req, res) => {
 };
 
 const viewNotesByUserId = async (req, res) => {
-  await Note.find({ userId: req.params.id })
+  await Note.find({ token: req.params.id })
     .sort({ noteDate: -1 })
     .then((data) => {
       res.status(200).send({ data: data });

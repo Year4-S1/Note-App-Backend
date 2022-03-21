@@ -20,7 +20,7 @@ const deleteCategory = async (req, res) => {
 };
 
 const deleteCategoryMakeNull = async (req, res) => {
-  let userToken = await Category.find({ userId: req.params.id });
+  let userToken = await Category.find({ token: req.params.id });
   console.log(userToken);
 
   if (userToken) {
@@ -28,7 +28,7 @@ const deleteCategoryMakeNull = async (req, res) => {
       { categoryColor: req.body.categoryColor },
       {
         $set: {
-          //userId: req.body.userId,
+          //token: req.body.token,
           categoryName: null,
           //categoryColor: req.body.categoryColor,
         },
