@@ -1,4 +1,4 @@
-const Note = require("../models/note-model");
+const Note = require("../../models/note-model");
 
 const updateNote = async (req, res) => {
   await Note.findByIdAndUpdate(
