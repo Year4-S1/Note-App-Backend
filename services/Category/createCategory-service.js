@@ -4,16 +4,16 @@ const createCategory = async (req, res) => {
   if (req.body) {
     let category = new Category();
     const container = req.body;
-    console.log(container.userId);
-
-    let arr = container.data;
+    console.log(container.data.id);
+    var userId = "";
+    let arr = container.data.data;
     console.log(arr);
 
     Object.entries(arr).forEach(([key, value]) => {
       console.log(key, value);
-
+      userId = container.data.id;
       let category = new Category({
-        userId: container.userId,
+        userId: userId,
         categoryName: key,
         categoryColor: value,
       });
