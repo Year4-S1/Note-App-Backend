@@ -1,4 +1,4 @@
-const Notification = require("../models/reminder-model");
+const Notification = require("../../models/reminder-model");
 
 const deleteNotification = async (req, res) => {
   //check if the req body is empty
