@@ -1,4 +1,5 @@
 const Reminder = require("../../models/reminder-model");
+
 require("date-utils");
 
 const createReminder = async (req,res) => {
@@ -8,7 +9,7 @@ const createReminder = async (req,res) => {
     reminder.reminderTitle = req.body.reminderTitle;
     reminder.reminderMessage = req.body.reminderMessage;
     reminder.reminderDate = req.body.reminderDate;
-    reminder.reminderTime = new Date().toTimeString();
+    reminder.reminderTime =req.body.reminderTime;
     await reminder
       .save()
       .then((data) => {
