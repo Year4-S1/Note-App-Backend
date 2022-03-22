@@ -18,16 +18,37 @@ const createCategory = async (req, res) => {
         categoryColor: key,
       });
 
-      await category
-        .save()
-        .then((data) => {
-          if (x == count) {
-            return res.status(200).send({ message: "success" });
-          }
+      const query = {
+        $and: [{ userId: container.id }, { categoryColor: key }],
+      };
+      const catergoryExist = await Category.find(query);
+
+      if (catergoryExist.length == 0) {
+        await category
+          .save()
+          .then((data) => {
+            if (x == count) {
+              return res.status(200).send({ message: "success" });
+            }
+          })
+          .catch((error) => {
+            return res.status(500).send({ error: error.message });
+          });
+      } else {
+        await Category.findOneAndUpdate(query, {
+          $set: {
+            categoryName: value,
+          },
         })
-        .catch((error) => {
-          return res.status(500).send({ error: error.message });
-        });
+          .then((data) => {
+            if (x == count) {
+              return res.status(200).send({ message: "success" });
+            }
+          })
+          .catch((error) => {
+            return res.status(500).send({ error: error.message });
+          });
+      }
     }
   }
 };
