@@ -3,7 +3,7 @@ const Category = require("../../models/category-model");
 const createCategory = async (req, res) => {
   if (req.body) {
     let category = new Category();
-    const container = req.body.data;
+    const container = req.body;
  
 
     let arr = container.data;
