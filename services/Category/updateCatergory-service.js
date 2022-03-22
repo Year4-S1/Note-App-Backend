@@ -1,27 +1,37 @@
 const Category = require("../../models/category-model");
 
 const updateCategory = async (req, res) => {
-  let userToken = await Category.find({ token: req.params.id });
-  console.log(userToken);
+  let userId = await Category.find({ userId: req.params.id });
+  console.log(userId);
 
-  if (userToken) {
-    await Category.findOneAndUpdate(
-      { categoryColor: req.body.categoryColor },
-      {
-        $set: {
-          //token: req.body.token,
-          categoryName: req.body.categoryName,
-          //categoryColor: req.body.categoryColor,
-        },
-      }
-      //{ upsert: true }
-    )
-      .then((data) => {
-        res.status(200).send({ data: data });
-      })
-      .catch((error) => {
-        res.status(500).send({ error: error.message });
-      });
+  if (userId) {
+    const container = req.body;
+
+    let arr = container.data;
+
+    let count = Object.entries(arr).length;
+    let x = 0;
+
+    for (const [key, value] of Object.entries(arr)) {
+      x++;
+
+      await Category.findOneAndUpdate(
+        { categoryColor: key },
+        {
+          $set: {
+            categoryName: value,
+          },
+        }
+      )
+        .then((data) => {
+          if (x == count) {
+            return res.status(200).send({ message: "success" });
+          }
+        })
+        .catch((error) => {
+          return res.status(500).send({ error: error.message });
+        });
+    }
   }
 };
 
