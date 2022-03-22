@@ -1,4 +1,4 @@
-const Reminder = require("../models/reminder-model");
+const Reminder = require("../../models/reminder-model");
 
 const viewNotifications = async (req, res) => {
   await Reminder.find({})
