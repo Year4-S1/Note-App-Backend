@@ -14,8 +14,8 @@ const createCategory = async (req, res) => {
       x++;
       let category = new Category({
         userId: container.id,
-        categoryName: key,
-        categoryColor: value,
+        categoryName: value,
+        categoryColor: key,
       });
 
       await category
