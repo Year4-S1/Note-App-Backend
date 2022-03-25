@@ -5,7 +5,7 @@ const createNote = async (req, res) => {
   if (req.body) {
     const note = new Note();
     note.userId = req.body.userId;
-    note.categoryId = req.body.categoryId;
+    note.categoryColor = req.body.categoryColor;
     note.noteTittle = req.body.noteTittle;
     note.noteMessage = req.body.noteMessage;
     note.noteDate = new Date().toLocaleDateString();
