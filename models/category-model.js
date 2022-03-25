@@ -6,8 +6,8 @@ const CategorySchema = new mongoose.Schema({
     required: false,
     ref: "users",
   },
-  categoryName: { type: String, required: true, trim: true },
-  categoryColor: { type: String, required: true, trim: true },
+  categoryName: { type: String, required: false, trim: true },
+  categoryColor: { type: String, required: false, trim: true },
 });
 
 const Category = mongoose.model("categories", CategorySchema);
