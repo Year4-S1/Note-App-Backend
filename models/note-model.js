@@ -6,8 +6,8 @@ const NoteSchema = new mongoose.Schema({
     required: false,
     ref: "users",
   },
-  categoryId: {
-    type: mongoose.Schema.Types.ObjectId,
+  categoryColor: {
+    type: String,
     required: false,
     ref: "categories",
   },
