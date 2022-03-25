@@ -45,6 +45,18 @@ const viewNoteById = async (req, res) => {
   }
 };
 
+// const getNoteCountPerCategory = async (req, res) => {
+
+//   await Order.find({ status: "ACCEPTED" })
+//     .count()
+//     .then((data) => {
+//       res.status(200).send({ data: data });
+//     })
+//     .catch((error) => {
+//       res.status(500).send({ error: error.message });
+//     });
+// };
+
 module.exports = {
   viewNotes,
   viewNoteById,
