@@ -6,7 +6,7 @@ const updateNote = async (req, res) => {
     {
       $set: {
         categoryId: req.body.categoryId,
-        noteTittle: req.body.noteTittle,
+        noteTitle: req.body.noteTitle,
         noteMessage: req.body.noteMessage,
         noteDate: new Date().toLocaleDateString(),
         noteTime: new Date().toTimeString(),

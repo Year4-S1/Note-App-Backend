@@ -11,7 +11,7 @@ const NoteSchema = new mongoose.Schema({
     required: false,
     ref: "categories",
   },
-  noteTittle: { type: String, required: false, trim: true },
+  noteTitle: { type: String, required: false, trim: true },
   noteMessage: { type: String, required: false, trim: true },
   noteDate: { type: String, required: false, trim: true },
   noteTime: { type: String, required: false, trim: true },
