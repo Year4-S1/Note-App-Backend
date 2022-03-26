@@ -35,24 +35,25 @@ async function getNoteCount(userId, categoryColor) {
 }
 
 const viewCategoryByUseId = async (req, res) => {
-  var query = { userId: req.params.id };
+  let filterData = [];
+  var categoryNoteCount = new Map();
+  let result = 0;
+  let resCat = [];
+  let noteCount = {};
+  let uid = req.params.id;
+  let clrArr=[];
 
   await Category.find({ userId: req.params.id })
 
     .then((data) => {
-      // console.log(data.length);
-      let filterData = [];
-      var categoryNoteCount = new Map();
-      let result = 0;
-      let resCat = [];
 
       for (let i = 0; i < data.length; i++) {
-        let noteCount = {};
 
         if (data[i].categoryName != "") {
           filterData.push(data[i]);
         }
 
+        clrArr.push(data[i].categoryColor);
         // (async () => {
         //   result = await getNoteCount(data[i].userId, data[i].categoryColor);
         //   color = data[i].categoryColor;
@@ -68,26 +69,31 @@ const viewCategoryByUseId = async (req, res) => {
         // console.log("Result N : " + result);
         const query = {
           $and: [
-            { userId: data[i].userId },
-            { categoryColor: data[i].categoryColor },
+            { },
+            {  },
           ],
         };
+      }
 
-        noteCount = Note.find(query)
+
+      // console.log(clrArr);
+
+
+      for(let i = 0; i< clrArr.length; i++){
+      noteCount = Note.find({ userId: uid,categoryColor: clrArr[i]})
           .count()
           .then((result) => {
-            console.log(data[i].categoryColor + " : " + result);
+            // console.log(data[i].categoryColor + " : " + result);
             // categoryNoteCount[data[i].categoryColor] = result;
-            categoryNoteCount.set(data[i].categoryColor, result);
-            console.log(categoryNoteCount);
-            return result;
+            categoryNoteCount.set(clrArr[i], result);
+            // console.log(categoryNoteCount);
+            return categoryNoteCount;
           });
-        // console.log(noteCount);
-        console.log(data[i].categoryColor + " : " + noteCount);
-        // categoryNoteCount.set(data[i].categoryColor, result);
-      }
-      console.log("New" + categoryNoteCount.size);
-      console.log("Res" + resCat);
+        }
+
+      // console.log("New" + categoryNoteCount.size);
+      console.log("Res " + categoryNoteCount);
+      console.log("Res " + noteCount);
       const len = filterData.length;
       res.status(200).send({ data: filterData });
     })
