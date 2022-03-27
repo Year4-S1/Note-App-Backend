@@ -9,6 +9,6 @@ module.exports = function () {
   router.post("/create", addUserController.addUser);
   router.post("/register", register.registration);
   router.post("/verify", register.verify);
-  router.post("/update", update.editPassword);
+  router.put("/update", update.editPassword);
   return router;
 };
