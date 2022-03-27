@@ -1,4 +1,5 @@
 const read = require("body-parser/lib/read");
+const { callbackPromise } = require("nodemailer/lib/shared");
 const Note = require("../../models/note-model");
 
 const updateNote = async (req, res) => {
@@ -12,8 +13,8 @@ const updateNote = async (req, res) => {
         noteDate: new Date().toLocaleDateString(),
         noteTime: new Date().toTimeString(),
       },
-    }
-    // { upsert: true }
+    },
+    { upsert: true }
   )
     .then((data) => {
       res.status(200).send({ data: req.body });
