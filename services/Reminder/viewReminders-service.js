@@ -23,7 +23,31 @@ const viewNotificationById = async (req, res) => {
   }
 };
 
+const viewRemindersByCategoryId = async (req, res) => {
+  await Reminder.find({ categoryColor: req.params.id })
+    .sort({ reminderDate: -1 })
+    .then((data) => {
+      res.status(200).send({ data: data });
+    })
+    .catch((error) => {
+      res.status(500).send({ error: error.message });
+    });
+};
+
+const viewReminderByUserId = async (req, res) => {
+  await Reminder.find({ userId: req.params.id })
+    .sort({ reminderDate: -1 })
+    .then((data) => {
+      res.status(200).send({ data: data });
+    })
+    .catch((error) => {
+      res.status(500).send({ error: error.message });
+    });
+}
+
 module.exports = {
   viewNotificationById,
   viewNotifications,
+  viewRemindersByCategoryId,
+  viewReminderByUserId,
 };

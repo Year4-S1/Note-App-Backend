@@ -7,9 +7,10 @@ const createReminder = async (req,res) => {
     const reminder = new Reminder();
     reminder.userId = req.body.userId;
     reminder.reminderTitle = req.body.reminderTitle;
+    reminder.categoryColor = req.body.categoryColor;
     reminder.reminderMessage = req.body.reminderMessage;
     reminder.reminderDate = req.body.reminderDate;
-    reminder.reminderTime =req.body.reminderTime;
+    reminder.reminderTime = req.body.reminderTime;
     await reminder
       .save()
       .then((data) => {
