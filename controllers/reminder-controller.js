@@ -8,9 +8,11 @@ const deleteNotificationByID = require("../services/Reminder/deleteReminder-serv
 const updateReminder = require("../services/Reminder/updateReminder-service");
 const viewReminderByUserID = require("../services/Reminder/viewReminders-service");
 const viewReminderByCategoryId = require("../services/Reminder/viewReminders-service");
+const activeStatus =  require("../services/Reminder/createReminder-service");
 
 module.exports = function () {
   router.post("/create", createNotificationController.createReminder);
+  router.post("/create/active", activeStatus.createReminderwithActiveStatus);
   router.get("/view/:id", viewNotificationsbyId.viewNotificationById);
   router.get("/", viewAllNotifications.viewNotifications);
   router.put("/update/:id",updateReminder.updateReminder);
