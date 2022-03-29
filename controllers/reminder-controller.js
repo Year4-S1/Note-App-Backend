@@ -12,7 +12,7 @@ const activeStatus =  require("../services/Reminder/createReminder-service");
 
 module.exports = function () {
   router.post("/create", createNotificationController.createReminder);
-  router.post("/create/active", activeStatus.createReminderwithActiveStatus);
+  router.put("/create/active", activeStatus.createReminderwithActiveStatus);
   router.get("/view/:id", viewNotificationsbyId.viewNotificationById);
   router.get("/", viewAllNotifications.viewNotifications);
   router.put("/update/:id",updateReminder.updateReminder);
