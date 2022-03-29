@@ -6,7 +6,7 @@ const createReminder = async (req,res) => {
   if (req.body) {
     const reminder = new Reminder();
     reminder.userId = req.body.userId;
-    reminder.reminderTittle = req.body.reminderTittle;
+    reminder.reminderTitle = req.body.reminderTitle;
     reminder.categoryColor = req.body.categoryColor;
     reminder.reminderMessage = req.body.reminderMessage;
     reminder.reminderDate = req.body.reminderDate;
@@ -26,7 +26,7 @@ const createReminderwithActiveStatus = async (req,res) => {
   if (req.body) {
     const reminder = new Reminder();
     reminder.userId = req.body.userId;
-    reminder.reminderTittle = req.body.reminderTittle;
+    reminder.reminderTitle = req.body.reminderTitle;
     reminder.categoryColor = req.body.categoryColor;
     reminder.reminderMessage = req.body.reminderMessage;
     reminder.reminderDate = req.body.reminderDate;
