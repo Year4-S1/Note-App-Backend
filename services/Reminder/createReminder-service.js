@@ -26,11 +26,12 @@ const createReminderwithActiveStatus = async (req,res) => {
   if (req.body) {
     const reminder = new Reminder();
     reminder.userId = req.body.userId;
-    reminder.reminderTitle = req.body.reminderTitle;
-    reminder.categoryColor = req.body.categoryColor;
-    reminder.reminderMessage = req.body.reminderMessage;
-    reminder.reminderDate = req.body.reminderDate;
-    reminder.reminderTime = req.body.reminderTime;
+    // reminder.reminderTitle = req.body.reminderTitle;
+    // reminder.categoryColor = req.body.categoryColor;
+    // reminder.reminderMessage = req.body.reminderMessage;
+    // reminder.reminderDate = req.body.reminderDate;
+    // reminder.reminderTime = req.body.reminderTime;
+    reminder.reminderId = req.body.reminderId;
     reminder.activeStatus = req.body.activeStatus;
     await reminder
       .save()
