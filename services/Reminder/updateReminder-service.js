@@ -9,7 +9,7 @@ const updateReminder = async (req, res) => {
       {
         $set: {
           categoryColor: req.body.categoryColor,
-          reminderTittle: req.body.reminderTittle,
+          reminderTitle: req.body.reminderTitle,
           reminderMessage: req.body.reminderMessage,
           reminderDate: req.body.reminderDate,
           reminderTime: req.body.reminderTime,

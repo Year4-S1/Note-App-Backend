@@ -11,7 +11,7 @@ const ReminderSchema = new mongoose.Schema({
     required: false,
     ref: "categories",
   },
-  reminderTittle: { type: String, required: false, trim: true },
+  reminderTitle: { type: String, required: false, trim: true },
   reminderMessage: { type: String, required: false, trim: true },
   reminderDate: { type: Date, required: false, trim: true },
   reminderTime: { type: String, required: false, trim: true },
