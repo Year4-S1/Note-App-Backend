@@ -16,7 +16,7 @@ module.exports = function () {
   router.get("/view/:id", viewNotificationsbyId.viewNotificationById);
   router.get("/", viewAllNotifications.viewNotifications);
   router.put("/update/:id",updateReminder.updateReminder);
-  router.get("/delete/:id", deleteNotificationByID.deleteNotification);
+  router.delete("/delete/:id", deleteNotificationByID.deleteNotification);
   router.get("/userid/:id", viewReminderByUserID.viewReminderByUserId);
   router.get("/category/:id", viewReminderByCategoryId.viewRemindersByCategoryId);
   return router;
