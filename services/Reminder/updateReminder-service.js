@@ -28,6 +28,29 @@ const updateReminder = async (req, res) => {
   }
 };
 
+const updateReminderwithActiveStatus = async (req,res) => {
+  if (req.body) {
+    const reminder = new Reminder();
+    await Reminder.findByIdAndUpdate(
+      req.params.id,
+      {
+        $set: {
+          activeStatus: req.body.activeStatus,
+        },
+      },
+      { upsert: true },
+      function (err, result) {
+        if (err) {
+          res.status(500).send(body);
+        } else {
+          res.status(200).send(result);
+        }
+      }
+    );
+   
+  }
+};
 module.exports = {
   updateReminder,
+  updateReminderwithActiveStatus,
 };
