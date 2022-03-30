@@ -4,7 +4,7 @@ const updateReminder = async (req, res) => {
   if (!req.is("application/json")) {
     res.send(400);
   } else {
-    await Reminder.findByIdAndUpdate(
+    Reminder.findByIdAndUpdate(
       req.params.id,
       {
         $set: {
