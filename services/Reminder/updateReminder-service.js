@@ -29,8 +29,9 @@ const updateReminder = async (req, res) => {
 };
 
 const updateReminderwithActiveStatus = async (req,res) => {
-  if (req.body) {
-    const reminder = new Reminder();
+  if (!req.is("application/json")) {
+    res.send(400);
+  } else {
     await Reminder.findByIdAndUpdate(
       req.params.id,
       {

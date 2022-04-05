@@ -9,7 +9,7 @@ const updateReminder = require("../services/Reminder/updateReminder-service");
 const viewReminderByUserID = require("../services/Reminder/viewReminders-service");
 const viewReminderByCategoryId = require("../services/Reminder/viewReminders-service");
 const updateactiveStatus =  require("../services/Reminder/updateReminder-service");
-const getNotification = require("../services/Reminder/viewReminders-service");
+
 
 module.exports = function () {
   router.post("/create", createNotificationController.createReminder);
@@ -20,6 +20,6 @@ module.exports = function () {
   router.delete("/delete/:id", deleteNotificationByID.deleteNotification);
   router.get("/userid/:id", viewReminderByUserID.viewReminderByUserId);
   router.get("/category/:id", viewReminderByCategoryId.viewRemindersByCategoryId);
-  router.get("/notification/send/:id",getNotification.viewNotificationByUserId);
+ 
   return router;
 }; 
