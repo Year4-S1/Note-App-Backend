@@ -29,9 +29,10 @@ const updateReminder = async (req, res) => {
 };
 
 const updateReminderwithActiveStatus = async (req,res) => {
-  if (req.body) {
-    const reminder = new Reminder();
-    await Reminder.findByIdAndUpdate(
+  if (!req.is("application/json")) {
+    res.send(400);
+  } else {
+    Reminder.findByIdAndUpdate(
       req.params.id,
       {
         $set: {
@@ -47,9 +48,9 @@ const updateReminderwithActiveStatus = async (req,res) => {
         }
       }
     );
-   
   }
 };
+
 module.exports = {
   updateReminder,
   updateReminderwithActiveStatus,
