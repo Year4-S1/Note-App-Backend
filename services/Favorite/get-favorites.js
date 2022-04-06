@@ -5,7 +5,7 @@ const { json } = require("express/lib/response");
 
 const getFavorites = async (req, res) => {
 
-  const uid = req.body.userId;
+  const uid = req.params.userId;
 
   await Favorites.find({
     $and: [{ userId: uid }, { favoriteStatus: true }],
@@ -25,7 +25,7 @@ const getFavorites = async (req, res) => {
 
 const getOneFav = async (req, res) => {
 
-  const favorite = req.body.noteId;
+  const favorite = req.params.noteId;
 
   Favorites.find({ noteId: favorite})
     .then((data) => {
