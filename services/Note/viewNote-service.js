@@ -2,7 +2,7 @@ const Note = require("../../models/note-model");
 
 const viewNotes = async (req, res) => {
   await Note.find({})
-    .sort({ noteTime: -1 })
+    .sort({ noteDate: -1 })
     .then((data) => {
       res.status(200).send({ data: data });
     })
@@ -13,7 +13,7 @@ const viewNotes = async (req, res) => {
 
 const viewNotesByUserId = async (req, res) => {
   await Note.find({ userId: req.params.id })
-    .sort({ noteTime: -1 })
+    .sort({ noteDate: -1 })
     .then((data) => {
       res.status(200).send({ data: data });
     })
@@ -24,7 +24,7 @@ const viewNotesByUserId = async (req, res) => {
 
 const viewNotesByCategoryId = async (req, res) => {
   await Note.find({ categoryColor: req.params.id })
-    .sort({ noteTime: -1 })
+    .sort({ noteDate: -1 })
     .then((data) => {
       res.status(200).send({ data: data });
     })
