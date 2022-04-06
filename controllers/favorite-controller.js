@@ -5,8 +5,8 @@ const getFavorites = require("../services/Favorite/get-favorites");
 
 module.exports = function () {
   router.post("/add", addFavorite.addFavorite);
-  router.get("/get", getFavorites.getFavorites);
-  router.get("/getone", getFavorites.getOneFav);
+  router.get("/get/:userId", getFavorites.getFavorites);
+  router.get("/getone/:noteId", getFavorites.getOneFav);
 
   return router;
 };
