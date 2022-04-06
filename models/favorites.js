@@ -6,11 +6,11 @@ const FavoriteSchema = new mongoose.Schema({
     required: false,
     ref: "users",
   },
-  noteId: [{
+  noteId: {
     type: mongoose.Schema.Types.ObjectId,
     required: false,
     ref: "notes",
-  }],
+  },
   favoriteStatus: { type: Boolean, required: false, trim: true },
 
 });
