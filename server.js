@@ -7,8 +7,8 @@ const bodyParser = require("body-parser");
 const noteController = require("./controllers/note-controller");
 const categoryController = require("./controllers/category-controller");
 const userController = require("./controllers/user-controller");
-const notificationController = require("./controllers/reminder-controller");
 const favoriteController = require("./controllers/favorite-controller");
+const reminderController = require("./controllers/reminder-controller");
 
 dotenv.config();
 const app = express();
@@ -46,6 +46,7 @@ app.route("/").get((req, res) => {
 app.use("/note", noteController());
 app.use("/category", categoryController());
 app.use("/user", userController());
-app.use("/reminder",notificationController());
 app.use("/favorite",favoriteController());
+app.use("/reminder",reminderController());
+
 

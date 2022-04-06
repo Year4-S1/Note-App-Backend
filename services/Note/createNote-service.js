@@ -1,12 +1,12 @@
-const Note = require("../models/note-model");
+const Note = require("../../models/note-model");
 require("date-utils");
 
 const createNote = async (req, res) => {
   if (req.body) {
     const note = new Note();
     note.userId = req.body.userId;
-    note.categoryId = req.body.categoryId;
-    note.noteTittle = req.body.noteTittle;
+    note.categoryColor = req.body.categoryColor;
+    note.noteTitle = req.body.noteTitle;
     note.noteMessage = req.body.noteMessage;
     note.noteDate = new Date().toLocaleDateString();
     note.noteTime = new Date().toTimeString();

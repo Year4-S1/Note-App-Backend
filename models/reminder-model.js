@@ -1,16 +1,21 @@
 const mongoose = require("mongoose");
 
 const ReminderSchema = new mongoose.Schema({
-  notificationID: {
+  userId: {
     type: mongoose.Schema.Types.ObjectId,
     required: false,
-    ref: "notifications",
+    ref: "users",
   },
-  reminderTittle: { type: String, required: false, trim: true },
+  categoryColor: {
+    type: String,
+    required: false,
+    ref: "categories",
+  },
+  reminderTitle: { type: String, required: false, trim: true },
   reminderMessage: { type: String, required: false, trim: true },
   reminderDate: { type: Date, required: false, trim: true },
-},{
-  timestamps: true,
+  reminderTime: { type: String, required: false, trim: true },
+  activeStatus: { type: Boolean, required: false, trim: true }
 });
 
 const Reminder = mongoose.model("notifications", ReminderSchema);

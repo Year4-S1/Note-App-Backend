@@ -1,4 +1,4 @@
-const Notification = require("../models/reminder-model");
+const Reminder = require("../../models/reminder-model");
 
 const deleteNotification = async (req, res) => {
   //check if the req body is empty
@@ -6,7 +6,7 @@ const deleteNotification = async (req, res) => {
   console.log(id);
 
   //delete product data from database
-  await Note.findByIdAndDelete(id)
+  await Reminder.findByIdAndDelete(id)
     .then((response) => {
       console.log("Data sucessfully deleted from the mongo db!");
 
